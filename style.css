@@ -3,3 +3,21 @@
     margin: 0;
     padding: 0;
 }
+
+.container {
+    display: grid;
+    grid-template: 1fr / 1fr 4fr;
+}
+
+.container .sidebar {
+    grid-column: 1 / 2;
+}
+
+.container .main {
+    grid-column: 2 / 3;
+}
+
+.container .main .books #bookList {
+    display: grid;
+    grid-template: repeat(auto-fit, minmax(200px, 1fr)) / repeat(auto-fit, minmax(200px, 1fr));
+}

@@ -7,13 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
     <body>
-        <h1>Library</h1>
-        <div class="bookForm">
-            <form onsubmit="return addBookToLibrary()">
-                <p>Please enter your book name:</p>
-                <input type="text" id="textBox">
-                <input type="submit" value="submit">
-            </form>
+        <div class="container">
+            <section class="sidebar">
+                <h1>Library</h1>
+                <div class="bookForm">
+                    <form onsubmit="return addBookToLibrary()">
+                        <p>Please enter your book name:</p>
+                        <input type="text" id="textBox">
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
+            </section>
+            <main class="main">
+                <div class="books">
+                    <div id="bookList"></div>
+                </div>
+            </main>
         </div>
     </body>
     <script src="script.js"></script>
