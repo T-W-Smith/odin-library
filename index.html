@@ -17,6 +17,7 @@
                         <input type="submit" value="submit">
                     </form>
                 </div>
+                <button id="newBook">New Book</button>
             </section>
             <main class="main">
                 <div class="books">
@@ -27,6 +28,33 @@
                 </div>
             </main>
         </div>
+
+        <dialog id="dialog">
+            <form method="dialog" onsubmit="return addBookToLibrary()">
+                <p>
+                    Enter book info:
+                    <div>
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div>
+                        <label for="author">Author:</label>
+                        <input type="text" id="author" name="author" required>
+                    </div>
+                    <div>
+                        <label for="pages">Number of Pages:</label>
+                        <input type="number" id="pages" name="pages" required>
+                    </div>
+                    <div>
+                        <label for="read">Has read:</label>
+                        <input type="checkbox" id="read" name="read">
+                    </div>
+                </p>
+                <div>
+                    <input type="submit" id="submit" value="Submit" />
+                </div>
+            </form>
+        </dialog>
     </body>
     <script src="script.js"></script>
 </html>
