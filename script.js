@@ -1,8 +1,8 @@
-const textBox = document.getElementById('textBox');
 const bookList = document.getElementById('bookList');
 const newBookBtn = document.getElementById('newBook');
 const dialog = document.getElementById('dialog');
 const submitBtn = document.getElementById('submit');
+const cancelBtn = document.getElementById('cancelBtn');
 const titleInput = document.getElementById('title');
 const authorInput = document.getElementById('author');
 const pagesInput = document.getElementById('pages');
@@ -12,20 +12,18 @@ newBookBtn.addEventListener("click", () => {
     dialog.showModal();
 })
 
-// submitBtn.addEventListener("click", (e) => {
-//     let book = new Book(title, author, pages, read);
-//     myLibrary.push(book);
-//     e.preventDefault();
-//     dialog.close;
-// });
+cancelBtn.addEventListener("click", () => {
+    clearInput();
+})
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, index) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.index = index;
 
     this.info = function() {
         let hasRead = "";
@@ -38,23 +36,23 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary() {
-    //myLibrary.push(textBox.value);
-    //textBox.value = null;
-    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
+    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked, myLibrary.length);
     myLibrary.push(book);
     let div = document.createElement('div');
     div.innerText = myLibrary[myLibrary.length - 1].info();
     bookList.append(div);
-    //displayBooks();
+    let button = document.createElement('button');
+    button.setAttribute('id', 'removeBtn');
+    button.innerHTML = 'Remove Book';
+    div.appendChild(button);
+    clearInput();
     return false;
 }
 
-// function displayBooks() {
-//     bookList.innerHTML = '';
-
-//     for (let i = 0; i < myLibrary.length; i++) {
-//         let div = document.createElement('div');
-//         div.innerText = myLibrary[i];
-//         bookList.append(div);
-//     }
-// }
+function clearInput() {
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
+    readInput.checked = false;
+    dialog.close();
+}
