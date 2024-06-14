@@ -39,12 +39,17 @@ function addBookToLibrary() {
     let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked, myLibrary.length);
     myLibrary.push(book);
     let div = document.createElement('div');
+    div.setAttribute('id', myLibrary.length - 1);
     div.innerText = myLibrary[myLibrary.length - 1].info();
     bookList.append(div);
-    let button = document.createElement('button');
-    button.setAttribute('id', 'removeBtn');
-    button.innerHTML = 'Remove Book';
-    div.appendChild(button);
+    let removeBtn = document.createElement('button');
+    removeBtn.setAttribute('id', 'removeBtn');
+    removeBtn.innerHTML = 'Remove Book';
+    div.appendChild(removeBtn);
+    removeBtn.addEventListener("click", () => {
+        document.getElementById(removeBtn.parentNode.id).remove();
+        myLibrary.splice(removeBtn.parentNode.id, removeBtn.parentNode.id);
+    })
     clearInput();
     return false;
 }
