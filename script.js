@@ -17,13 +17,14 @@ cancelBtn.addEventListener("click", () => {
 })
 
 const myLibrary = [];
+let lastIndex = 0;
 
 function Book(title, author, pages, read, index) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.index = index;
+    this.index = index
 
     this.info = function() {
         let hasRead = "";
@@ -36,10 +37,10 @@ function Book(title, author, pages, read, index) {
 }
 
 function addBookToLibrary() {
-    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked, myLibrary.length);
+    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked, lastIndex++);
     myLibrary.push(book);
     let div = document.createElement('div');
-    div.setAttribute('id', myLibrary.length - 1);
+    div.setAttribute('id', book.index);
     div.innerText = myLibrary[myLibrary.length - 1].info();
     bookList.append(div);
     let removeBtn = document.createElement('button');
