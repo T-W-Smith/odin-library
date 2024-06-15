@@ -29,9 +29,9 @@ function Book(title, author, pages, read, index) {
     this.info = function() {
         let hasRead = "";
         if (this.read)
-            hasRead = "I have read this one.";
+            hasRead = "Read";
         else
-            hasRead = "I have not read this one yet.";
+            hasRead = "Not read";
         return title + " by " + author + ". It has " + pages + " pages. " + hasRead; 
     };
 }
@@ -41,8 +41,18 @@ function addBookToLibrary() {
     myLibrary.push(book);
     let div = document.createElement('div');
     div.setAttribute('id', book.index);
-    div.innerText = myLibrary[myLibrary.length - 1].info();
+    let text = document.createElement('p');
+    text.innerHTML = book.info();
+    div.appendChild(text);
     bookList.append(div);
+    let readBtn = document.createElement('button');
+    readBtn.setAttribute('id', 'read');
+    readBtn.innerHTML = 'Has Read?';
+    div.appendChild(readBtn);
+    readBtn.addEventListener("click", () => {
+        book.read = !book.read;
+        text.innerHTML = book.info();
+    })
     let removeBtn = document.createElement('button');
     removeBtn.setAttribute('id', 'removeBtn');
     removeBtn.innerHTML = 'Remove Book';
