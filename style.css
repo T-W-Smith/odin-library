@@ -1,5 +1,29 @@
+.gentium-book-plus-regular {
+    font-family: "Gentium Book Plus", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.gentium-book-plus-bold {
+    font-family: "Gentium Book Plus", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.gentium-book-plus-regular-italic {
+    font-family: "Gentium Book Plus", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.gentium-book-plus-bold-italic {
+    font-family: "Gentium Book Plus", serif;
+    font-weight: 700;
+    font-style: italic;
+}  
+
 * {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Gentium Book Plus", 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
 }
@@ -47,6 +71,7 @@ dialog {
     transform: translate(-50%, -50%);
     width: 300px;
     height: 400px;
+    font-size: large;
 }
 
 form {
@@ -61,6 +86,10 @@ form p, form #checkbox {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+form #checkbox label{
+    padding-right: 10px;
 }
 
 form #textbox {
