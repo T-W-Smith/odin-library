@@ -30,13 +30,13 @@ function Book(title, author, pages, read, index) {
     this.read = read;
     this.index = index
 
-    this.info = function() {
+    this.hasRead = function() {
         let hasRead = "";
         if (this.read)
             hasRead = "Read";
         else
             hasRead = "Not read";
-        return title + " by " + author + ". It has " + pages + " pages. " + hasRead; 
+        return hasRead;
     };
 }
 
@@ -45,9 +45,18 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(book);
     let div = document.createElement('div');
     div.setAttribute('id', book.index);
-    let text = document.createElement('p');
-    text.innerHTML = book.info();
-    div.appendChild(text);
+    let titleText = document.createElement('p');
+    let authorText = document.createElement('p');
+    let pagesText = document.createElement('p');
+    let readText = document.createElement('p');
+    titleText.innerHTML = "Title: " + book.title;
+    authorText.innerHTML = "Author: " + book.author;
+    pagesText.innerHTML = book.pages + " Pages";
+    readText.innerHTML = book.hasRead();
+    div.appendChild(titleText);
+    div.appendChild(authorText);
+    div.appendChild(pagesText);
+    div.appendChild(readText);
     bookList.append(div);
     let readBtn = document.createElement('button');
     readBtn.setAttribute('id', 'read');
@@ -55,7 +64,7 @@ function addBookToLibrary(title, author, pages, read) {
     div.appendChild(readBtn);
     readBtn.addEventListener("click", () => {
         book.read = !book.read;
-        text.innerHTML = book.info();
+        readText.innerHTML = book.hasRead();
     })
     let removeBtn = document.createElement('button');
     removeBtn.setAttribute('id', 'removeBtn');
