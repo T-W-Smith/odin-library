@@ -16,6 +16,10 @@ cancelBtn.addEventListener("click", () => {
     clearInput();
 })
 
+submitBtn.addEventListener("click", () => {
+    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
+})
+
 const myLibrary = [];
 let lastIndex = 0;
 
@@ -36,8 +40,8 @@ function Book(title, author, pages, read, index) {
     };
 }
 
-function addBookToLibrary() {
-    let book = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked, lastIndex++);
+function addBookToLibrary(title, author, pages, read) {
+    let book = new Book(title, author, pages, read, lastIndex++);
     myLibrary.push(book);
     let div = document.createElement('div');
     div.setAttribute('id', book.index);
@@ -71,4 +75,10 @@ function clearInput() {
     pagesInput.value = "";
     readInput.checked = false;
     dialog.close();
+}
+
+window.onload = function () {
+    addBookToLibrary("Lord of the Rings", "J.R.R Tolkien", "1137", true);
+    addBookToLibrary("The Hobbit", "J.R.R Tolkien", "310", true);
+    addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", "311", false);
 }
