@@ -16,7 +16,7 @@ cancelBtn.addEventListener("click", () => {
     clearInput();
 })
 
-submitBtn.addEventListener("click", () => {
+submitBtn.addEventListener("submit", () => {
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
 })
 
@@ -45,6 +45,7 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(book);
     let div = document.createElement('div');
     div.setAttribute('id', book.index);
+    div.setAttribute('class', 'books');
     let titleText = document.createElement('p');
     let authorText = document.createElement('p');
     let pagesText = document.createElement('p');
@@ -58,10 +59,13 @@ function addBookToLibrary(title, author, pages, read) {
     div.appendChild(pagesText);
     div.appendChild(readText);
     bookList.append(div);
+    let btnDiv = document.createElement('div');
+    btnDiv.setAttribute('id', 'bookBtn');
+    div.appendChild(btnDiv);
     let readBtn = document.createElement('button');
-    readBtn.setAttribute('id', 'read');
+    readBtn.setAttribute('id', 'readBtn');
     readBtn.innerHTML = 'Has Read?';
-    div.appendChild(readBtn);
+    btnDiv.appendChild(readBtn);
     readBtn.addEventListener("click", () => {
         book.read = !book.read;
         readText.innerHTML = book.hasRead();
@@ -69,13 +73,12 @@ function addBookToLibrary(title, author, pages, read) {
     let removeBtn = document.createElement('button');
     removeBtn.setAttribute('id', 'removeBtn');
     removeBtn.innerHTML = 'Remove Book';
-    div.appendChild(removeBtn);
+    btnDiv.appendChild(removeBtn);
     removeBtn.addEventListener("click", () => {
-        document.getElementById(removeBtn.parentNode.id).remove();
-        myLibrary.splice(removeBtn.parentNode.id, removeBtn.parentNode.id);
+        document.getElementById(btnDiv.parentNode.id).remove();
+        myLibrary.splice(btnDiv.parentNode.id, btnDiv.parentNode.id);
     })
     clearInput();
-    return false;
 }
 
 function clearInput() {

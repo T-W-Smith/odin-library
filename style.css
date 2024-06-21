@@ -38,6 +38,21 @@
     grid-row: 1 / 2;
     margin: 15px;
     text-align: center;
+    font-size: x-large;
+}
+
+.container .header button {
+    background-color: #95D2B3;;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    font-size: large;
+}
+
+.container .header button:hover {
+    background-color: #84ba9f;
+    cursor: pointer;
 }
 
 .container .header h1 {
@@ -54,12 +69,33 @@
     grid-auto-rows: 300px;
 }
 
-.container .main .books #bookList div {
+.container .main .books #bookList .books {
     margin: 15px;
     background-color: white;
     border-left: 10px solid #95D2B3;
     border-radius: 10px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container .main .books #bookList .books #bookBtn {
+    display: flex;
+    gap: 25px;
+}
+
+.container .main .books #bookList .books #bookBtn button {
+    width: 100px;
+    height: 25px;
+    background-color: #95D2B3;
+    border: none;
+    border-radius: 10px;
+}
+
+.container .main .books #bookList .books #bookBtn button:hover {
+    background-color: #84ba9f;
+    cursor: pointer;
 }
 
 .footer {
@@ -100,8 +136,12 @@ form p, form #checkbox {
     align-items: center;
 }
 
-form #checkbox label{
+form #checkbox label {
     padding-right: 10px;
+}
+
+form #checkbox input {
+    accent-color: #95D2B3;
 }
 
 form #textbox {
@@ -116,6 +156,19 @@ form #submit {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+form #submit input, form #cancel input {
+    width: 100px;
+    height: 25px;
+    background-color: #95D2B3;
+    border: none;
+    border-radius: 10px;
+}
+
+form #submit input:hover, form #cancel input:hover {
+    background-color: #84ba9f;
+    cursor: pointer;
 }
 
 form #cancel {
