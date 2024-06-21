@@ -1,7 +1,7 @@
 const bookList = document.getElementById('bookList');
 const newBookBtn = document.getElementById('newBook');
 const dialog = document.getElementById('dialog');
-const submitBtn = document.getElementById('submit');
+const submitForm = document.querySelector('#form');
 const cancelBtn = document.getElementById('cancelBtn');
 const titleInput = document.getElementById('title');
 const authorInput = document.getElementById('author');
@@ -16,7 +16,8 @@ cancelBtn.addEventListener("click", () => {
     clearInput();
 })
 
-submitBtn.addEventListener("submit", () => {
+submitForm.addEventListener("submit", (e) => {
+    e.preventDefault();
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
 })
 
