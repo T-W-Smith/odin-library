@@ -30,15 +30,15 @@ function Book(title, author, pages, read, index) {
     this.pages = pages;
     this.read = read;
     this.index = index
+}
 
-    this.hasRead = function() {
-        let hasRead = "";
+Book.prototype.hasRead = function() {
+    let hasRead = "";
         if (this.read)
             hasRead = "Read";
         else
             hasRead = "Not read";
         return hasRead;
-    };
 }
 
 function addBookToLibrary(title, author, pages, read) {
