@@ -1,3 +1,4 @@
+// Elements
 const bookList = document.getElementById('bookList');
 const newBookBtn = document.getElementById('newBook');
 const dialog = document.getElementById('dialog');
@@ -8,22 +9,27 @@ const authorInput = document.getElementById('author');
 const pagesInput = document.getElementById('pages');
 const readInput = document.getElementById('read');
 
+// Shows Modal Dialog box
 newBookBtn.addEventListener("click", () => {
     dialog.showModal();
 })
 
+// Cancels the Modal Dialog Box
 cancelBtn.addEventListener("click", () => {
     clearInput();
 })
 
+// Submits the form
 submitForm.addEventListener("submit", (e) => {
     e.preventDefault();
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
 })
 
+// Library array
 const myLibrary = [];
 let lastIndex = 0;
 
+// Book Constructor function
 function Book(title, author, pages, read, index) {
     this.title = title;
     this.author = author;
@@ -32,6 +38,7 @@ function Book(title, author, pages, read, index) {
     this.index = index
 }
 
+// Book Prototype to prevent multiple copies of read function
 Book.prototype.hasRead = function() {
     let hasRead = "";
         if (this.read)
@@ -41,9 +48,11 @@ Book.prototype.hasRead = function() {
         return hasRead;
 }
 
+// Adds a new book to the Library array and the html page
 function addBookToLibrary(title, author, pages, read) {
     let book = new Book(title, author, pages, read, lastIndex++);
     myLibrary.push(book);
+    // Creates a div element for the added book with all the needed elements
     let div = document.createElement('div');
     div.setAttribute('id', book.index);
     div.setAttribute('class', 'books');
@@ -82,6 +91,7 @@ function addBookToLibrary(title, author, pages, read) {
     clearInput();
 }
 
+// Clears the dialog text boxes and closes it
 function clearInput() {
     titleInput.value = "";
     authorInput.value = "";
@@ -90,6 +100,7 @@ function clearInput() {
     dialog.close();
 }
 
+// Adds preloaded books automatically
 window.onload = function () {
     addBookToLibrary("Lord of the Rings", "J.R.R Tolkien", "1137", true);
     addBookToLibrary("The Hobbit", "J.R.R Tolkien", "310", true);

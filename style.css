@@ -1,3 +1,4 @@
+/* Gentium Book Font */
 .gentium-book-plus-regular {
     font-family: "Gentium Book Plus", serif;
     font-weight: 400;
@@ -28,12 +29,14 @@
     padding: 0;
 }
 
+/* Grid layout for page */
 .container {
     display: grid;
     grid-template: 1fr 4fr 0.5fr / 1fr;
     background-color: #F1F8E8;
 }
 
+/* Header */
 .container .header {
     grid-row: 1 / 2;
     margin: 15px;
@@ -59,10 +62,12 @@
     padding-bottom: 20px;
 }
 
+/* Main */
 .container .main {
     grid-row: 2 / 3;
 }
 
+/* Layout for each book section */
 .container .main .books #bookList {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
@@ -98,6 +103,7 @@
     cursor: pointer;
 }
 
+/* Footer */
 .footer {
     grid-row: 3 / 4;
     display: flex;
@@ -112,6 +118,7 @@
     margin-right: 5px;
 }
 
+/* Modal Dialog Box */
 dialog {
     position: absolute;
     left: 50%;
@@ -122,6 +129,7 @@ dialog {
     font-size: large;
 }
 
+/* Form layout */
 form {
     display: grid;
     grid-template: repeat(6, 1fr) / 0.5fr 0.5fr;
