@@ -29,23 +29,25 @@ submitForm.addEventListener("submit", (e) => {
 const myLibrary = [];
 let lastIndex = 0;
 
-// Book Constructor function
-function Book(title, author, pages, read, index) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.index = index
-}
-
-// Book Prototype to prevent multiple copies of read function
-Book.prototype.hasRead = function() {
-    let hasRead = "";
+// Book class
+class Book {
+    // Book class constructor
+    constructor(title, author, pages, read, index) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.index = index;
+    }
+    // Book hasRead method
+    hasRead() {
+        let hasRead = "";
         if (this.read)
             hasRead = "Read";
         else
             hasRead = "Not read";
         return hasRead;
+    }
 }
 
 // Adds a new book to the Library array and the html page
